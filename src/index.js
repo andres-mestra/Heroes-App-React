@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HeroesApp } from './HeroesApp';
 
 
 
 ReactDOM.render(
-  <div>HELLO REACT</div>, 
+  <HeroesApp />, 
   document.getElementById('root')
 );
