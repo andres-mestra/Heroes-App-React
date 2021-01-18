@@ -11,12 +11,12 @@ export const HeroListCard = ({
   characters, 
 }) => {
   return (
-    <div className="card ms-3 mt-3" style={{maxWidth: 540 }}>
+    <div className="card ms-3 mt-3" style={{maxWidth: 400 }}>
       <div className="row no-gutters">
-        <div className="col-md-4">
+        <div className="col-md-5">
           <img src={`./assets/heroes/${ id }.jpg`} className="card-img" alt={ superhero } />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-7">
           <div className="card-body">
             <h5 className="card-title">{ superhero }</h5>
             <p className="card-text">{ alter_ego }</p>
