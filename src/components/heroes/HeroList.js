@@ -9,7 +9,7 @@ export const HeroList = ({ publisher }) => {
   const heroes = getHeroesByPublisher( publisher );
 
   return (
-    <section className="card-columns" >
+    <section className="row justify-content-center" >
       {
         heroes.map( hero => (
           <HeroListCard 
