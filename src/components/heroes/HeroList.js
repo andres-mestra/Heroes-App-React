@@ -5,8 +5,10 @@ import PropTypes from 'prop-types'
 
 
 export const HeroList = ({ publisher }) => {
+  //Solo se vuelve a ejecutar si el publisher cambia 
+  const heroes = React.useMemo(() => getHeroesByPublisher( publisher ),
+  [publisher])
   
-  const heroes = getHeroesByPublisher( publisher );
 
   return (
     <section className="row justify-content-center" >
