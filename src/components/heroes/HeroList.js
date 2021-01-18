@@ -11,7 +11,7 @@ export const HeroList = ({ publisher }) => {
   
 
   return (
-    <section className="row justify-content-center" >
+    <section className="row justify-content-center animate__animated animate__fadeInRight" >
       {
         heroes.map( hero => (
           <HeroListCard 
