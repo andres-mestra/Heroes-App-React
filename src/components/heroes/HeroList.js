@@ -1,19 +1,27 @@
 import * as React from 'react'
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher'
+import { HeroListCard } from './HeroListCard';
+import PropTypes from 'prop-types'
+
 
 export const HeroList = ({ publisher }) => {
   
   const heroes = getHeroesByPublisher( publisher );
 
   return (
-    <ul>
+    <section className="card-columns" >
       {
         heroes.map( hero => (
-          <li key={hero.id}>
-            { hero.superhero }
-          </li>
+          <HeroListCard 
+            key={hero.id}
+            {...hero}
+          />
         ))
       }
-    </ul>
+    </section>
   )
+}
+
+HeroList.propTypes = {
+  publisher: PropTypes.string.isRequired,
 }
