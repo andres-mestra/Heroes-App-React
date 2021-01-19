@@ -12,6 +12,9 @@ describe('Pruebas en <PrivateRoute />', () => {
       pathname: '/marvel',
     }
   }
+
+  Storage.prototype.setItem = jest.fn()
+
   test('debe de mostrar el componente si esta autenticado y guardar localStorage.', () => {
 
     //mount: renderizar por completo el component, 
@@ -29,6 +32,7 @@ describe('Pruebas en <PrivateRoute />', () => {
       </MemoryRouter>
     )
     expect( wrapper.find('span').exists() ).toBe(true)
+    expect( localStorage.setItem ).toBeCalledWith('lastPath', '/marvel')
   })
   
 })
