@@ -11,7 +11,8 @@ module.exports = {
         transformOptions: {
           "presets": ["@babel/preset-react"]
         }
-      }
+      },
+      '@snowpack/plugin-react-refresh'
     ]
   ],
   routes: [
