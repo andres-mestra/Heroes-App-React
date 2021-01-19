@@ -1,6 +1,6 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { PrivateRoute } from '../../routers/PrivateRoute'
 
 
@@ -13,7 +13,10 @@ describe('Pruebas en <PrivateRoute />', () => {
     }
   }
   test('debe de mostrar el componente si esta autenticado y guardar localStorage.', () => {
-    const wrapper = shallow(
+
+    //mount: renderizar por completo el component, 
+    //util para cuando se tienen componentes anidados
+    const wrapper =  mount(
       //MemoryRouter: es una versión de Router para hacer pruebas,revisar la documentación
       //de react-router-dom
       //Lo usamos puesto que PrivateRouter retorna un Route que debe estar dentro de un Router
@@ -25,8 +28,7 @@ describe('Pruebas en <PrivateRoute />', () => {
         />
       </MemoryRouter>
     )
-
-    console.log( wrapper.html() )
+    expect( wrapper.find('span').exists() ).toBe(true)
   })
   
 })
