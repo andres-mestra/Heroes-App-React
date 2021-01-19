@@ -13,7 +13,7 @@ export const HeroesApp = () => {
 
   React.useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user) )
-    console.log(user)
+    
   }, [user])
 
   return (
