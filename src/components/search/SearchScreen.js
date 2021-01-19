@@ -4,38 +4,27 @@ import queryString from 'query-string'
 import { HeroListCard } from '../heroes/HeroListCard';
 import { useForm } from '../../hooks/useForm';
 import { heroes } from '../../data/heroes';
+import { getHeroesByName } from '../../selectors/getHeroesByName';
 
 
 
 export const SearchScreen = ({ history }) => {
 
   const location = useLocation();
-
   //parsea el q de la url, si no esta es q se le asigna por defecto el valor ''
   const { q = ''} = queryString.parse(location.search);
-
-  const [ heroesFilter, setHeroesFilter ] = React.useState([]);
   const [ values, handleInputChange, reset ] = useForm({
     search: q
   })
-  
   const { search } = values;
 
-  const handleSubmit = ( e ) => {
-    e.preventDefault()
+  //solo se ejecuta si el q cambia
+  const heroesFilter = React.useMemo( () => getHeroesByName(q), [q]);
 
-    if( search < 3 ){
-      return;
-    }
-    
+  const handleSubmit =  ( e ) => {
+    e.preventDefault()
     //query selector en la url
     history.push(`?q=${ search }`)
-    /* setHeroesFilter( () => {
-      return heroes.filter( hero => { 
-        return hero?.publisher.toLowerCase().includes(search) 
-      }) 
-    })
-    console.log(heroesFilter) */
   }
 
   return (
@@ -67,6 +56,21 @@ export const SearchScreen = ({ history }) => {
         <section className="col-7">
           <h4> Results </h4>
           <hr/>
+          {
+            ( q === '') 
+            &&
+              <div className="alert alert-info">
+                Search a hero
+              </div>
+          }
+          {
+            ( q !== '' && heroesFilter.length === 0 ) 
+            &&
+              <div className="alert alert-danger">
+                There is not a hero with { q }
+              </div>
+          }
+
           {
             heroesFilter.map( hero => (
               <HeroListCard 
