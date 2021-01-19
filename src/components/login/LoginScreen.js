@@ -11,6 +11,9 @@ export const LoginScreen = ({ history }) => {
     regresar retorna a la pagina de origen ( LoginScrenn )*/ 
     //history.push('/')
     
+    //para redireccionar al usuario a la ultima ruta que accedio estando autenticado
+    const lastPath = localStorage.getItem('lastPath') || '/'
+
     dispatch({
       type: types.login,
       payload: {
@@ -20,7 +23,7 @@ export const LoginScreen = ({ history }) => {
 
     /*Redirecciona  a la pagina indicada, pero si se presiona en el navegador 
     regresar NO retornara a  esta pagina ( LoginScrenn )*/
-    history.replace('/')
+    history.replace(lastPath)
 
   }
 

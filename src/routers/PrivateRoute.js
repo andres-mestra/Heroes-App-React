@@ -7,6 +7,11 @@ export const PrivateRoute = ({
   component:Component,
   ...rest
 }) => {
+  
+  //Guarda la pagina en la que esta el usuario mientras este autenticado
+  // o a una pagina que quiera ingresar antes que autenticarse
+  localStorage.setItem('lastPath', rest.location.pathname )
+
   return (
     <Route {...rest}
       //props: son lo props que provee el Route , history .....
