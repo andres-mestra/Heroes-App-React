@@ -4,6 +4,6 @@
     //"plugin:react/prop-types"
   ],
   "plugins": [
-    "react-hooks"
+    "react"
   ]
 }
