@@ -11,6 +11,11 @@ export const HeroesApp = () => {
   
   const [ user , dispatch ] = React.useReducer(authReducer, {}, init)
 
+  React.useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user) )
+    console.log(user)
+  }, [user])
+
   return (
     <main>
       <authContext.Provider value={{ user, dispatch }} >

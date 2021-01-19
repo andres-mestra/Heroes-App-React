@@ -1,12 +1,15 @@
 import * as React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { authContext } from '../../auth/authContext'
 
 export const NavBar = () => {
+
+    const { user } = React.useContext( authContext );
+
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            
-            <Link 
-                className="navbar-brand" 
+            <Link
+                className="navbar-brand"
                 to="/"
             >
                 Asociaciones
@@ -15,26 +18,26 @@ export const NavBar = () => {
             <div className="navbar-collapse">
                 <div className="navbar-nav">
 
-                    <NavLink 
+                    <NavLink
                         activeClassName="active"
-                        className="nav-item nav-link" 
+                        className="nav-item nav-link"
                         exact
                         to="/marvel"
                     >
                         Marvel
                     </NavLink>
 
-                    <NavLink 
+                    <NavLink
                         activeClassName="active"
-                        className="nav-item nav-link" 
+                        className="nav-item nav-link"
                         exact
                         to="/dc"
                     >
                         DC
                     </NavLink>
-                    <NavLink 
+                    <NavLink
                         activeClassName="active"
-                        className="nav-item nav-link" 
+                        className="nav-item nav-link"
                         exact
                         to="/search"
                     >
@@ -44,16 +47,22 @@ export const NavBar = () => {
             </div>
 
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-                    <NavLink 
+                <div className="navbar-nav ml-auto">
+                    { 
+                        user?.logged &&
+                            (<span className="nav-item nav-link text-info">
+                                { user.name }
+                            </span>)
+                    }
+                    <NavLink
                         activeClassName="active"
-                        className="nav-item nav-link" 
+                        className="nav-item nav-link"
                         exact
                         to="/login"
                     >
                         Logout
                     </NavLink>
-                </ul>
+                </div>
             </div>
         </nav>
     )
