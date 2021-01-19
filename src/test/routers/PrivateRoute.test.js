@@ -34,5 +34,23 @@ describe('Pruebas en <PrivateRoute />', () => {
     expect( wrapper.find('span').exists() ).toBe(true)
     expect( localStorage.setItem ).toBeCalledWith('lastPath', '/marvel')
   })
+
+  test('debe de bloquear el componente si no está autenticado.', () => {
+    const wrapper =  mount(
+      <MemoryRouter>
+        <PrivateRoute 
+          isAuthenticated={false}
+          component={() => <span>Listo!</span>}
+          {...props}
+        />
+      </MemoryRouter>
+    )
+
+    /*Si no esta autenticado <Redirect /> retorna un componente vacio*/
+    //console.log(wrapper.html());
+    //expect( wrapper.html() ).toBe('')
+    expect( wrapper.find('span').exists() ).toBe(false)
+  })
+  
   
 })
