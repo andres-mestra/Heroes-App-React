@@ -31,8 +31,8 @@ export const SearchScreen = ({ history }) => {
     <article>
       <h1>Search Screen</h1>
       <hr/>
-      <div className="row">
-        <section className="col-5">
+      <div className="row ">
+        <section className="col-lg-5 col-sm-12">
           <h4>Search Form</h4>
           <hr/>
           <form className="form-group" onSubmit={ handleSubmit }>
@@ -53,7 +53,7 @@ export const SearchScreen = ({ history }) => {
           </form>
 
         </section>
-        <section className="col-7">
+        <section className="col-sm-12 col-lg-7 ">
           <h4> Results </h4>
           <hr/>
           {
