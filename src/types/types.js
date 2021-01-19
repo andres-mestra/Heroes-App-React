@@ -1,6 +1,4 @@
-export const types = (params) => {
-  return {
-    login: '[auth] login',
-    logout: '[auth] logout',
-  }
+export const types = {
+  login: '[auth] login',
+  logout: '[auth] logout',
 }
